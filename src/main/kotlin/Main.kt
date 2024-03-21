@@ -1,22 +1,19 @@
 package chris.han
 
-import chris.han.factorymethodPattern.createChessPiece
-
 fun main() {
-  val chessPieces = listOf(
-    createChessPiece("Pd2"),
-    createChessPiece("Pd7"),
-    createChessPiece("Rd1"),
-    createChessPiece("Rd8"),
-    createChessPiece("Nd2"),
-    createChessPiece("Nd7"),
-    createChessPiece("Bc1"),
-    createChessPiece("Bf8"),
-    createChessPiece("Qd1"),
-    createChessPiece("Qd8"),
-    createChessPiece("Kd1"),
-    createChessPiece("Kd8"),
-  )
+  val mail = Mail(listOf("")).apply {
+    message("Hello")
+    subject("Hello")
+  }
+  
+  println(mail)
+}
 
-  chessPieces.forEach(::println)
+data class Mail(
+  val to: List<String>,
+  private var _message: String? = null,
+  private var _subject: String? = null,
+) {
+  fun message(message: String) = apply { _message = message }
+  fun subject(subject: String) = apply { _subject = subject }
 }
